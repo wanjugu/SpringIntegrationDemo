@@ -1,13 +1,12 @@
 package com.eip.demo.controllers;
 
 
+import com.eip.demo.model.PurchaseOrder;
 import com.eip.demo.model.SupportTicket;
+import com.eip.demo.service.PaymentService;
 import com.eip.demo.service.SupportService;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,10 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-public class SupportController {
+public class ApplicationController {
 
     @Autowired
     SupportService supportService;
+
+    @Autowired
+    PaymentService paymentService;
 
     @PostMapping(value = "create")
     public ResponseEntity createTicket(@RequestBody SupportTicket ticket){
@@ -29,6 +31,13 @@ public class SupportController {
 
         return new ResponseEntity("Sucess", HttpStatus.OK);
 
+    }
 
+    @PostMapping(value = "processOrder")
+    public ResponseEntity processOrder(@RequestBody PurchaseOrder order){
+
+        paymentService.submitPurchaseOrder(order);
+
+        return new ResponseEntity("Order Submitted", HttpStatus.OK);
     }
 }
