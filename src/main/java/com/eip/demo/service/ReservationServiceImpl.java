@@ -1,11 +1,14 @@
 package com.eip.demo.service;
 
+import com.eip.demo.config.GroupReservationChannelGateway;
 import com.eip.demo.config.RouterChannelGateway;
+import com.eip.demo.model.GroupReservation;
 import com.eip.demo.model.ReservationConfirmation;
 import com.eip.demo.model.ReservationRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,9 @@ public class ReservationServiceImpl implements ReservationService{
 
     @Autowired
     private RouterChannelGateway gateway;
+
+    @Autowired
+    private GroupReservationChannelGateway groupReservationChannelGateway;
 
     @Override
     public void addReservationRecord(String id, String name) {
@@ -34,5 +40,13 @@ public class ReservationServiceImpl implements ReservationService{
         logger.info("Received result from reservation confirmation channel {}",
                 reservationConfirmationMessage.getPayload());
 
+    }
+
+    @Override
+    public void bookGroupReservation(GroupReservation groupReservation) {
+        logger.info("Publishing group reservation {} to the reservation channel",
+                groupReservation.getReservationId());
+
+        groupReservationChannelGateway.publishGroupReservation(MessageBuilder.withPayload(groupReservation).build());
     }
 }
