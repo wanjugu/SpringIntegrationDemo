@@ -57,8 +57,8 @@ public class ApplicationController {
 
         GroupReservation groupReservation = new GroupReservation();
         groupReservation.setReservationId("123");
-        groupReservation.getParties().add(new PartyReservation(1,"Double","Smith"));
-        groupReservation.getParties().add(new PartyReservation(2,"Single","JOnes"));
+        groupReservation.getParties().add(new PartyReservation(1,"Double","Smith","1"));
+        groupReservation.getParties().add(new PartyReservation(2,"Single","JOnes", "2"));
 
         reservationService.bookGroupReservation(groupReservation);
 

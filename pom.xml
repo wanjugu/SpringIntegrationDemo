@@ -11,6 +11,7 @@
 	<groupId>com.eip</groupId>
 	<artifactId>demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -20,6 +21,10 @@
 	<developers>
 		<developer/>
 	</developers>
+	<modules>
+		<module>Transformers</module>
+		<module>Demo</module>
+	</modules>
 	<scm>
 		<connection/>
 		<developerConnection/>

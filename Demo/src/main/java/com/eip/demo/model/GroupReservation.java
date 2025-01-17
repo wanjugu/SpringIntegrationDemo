@@ -12,4 +12,7 @@ import java.util.List;
 public class GroupReservation {
     private String reservationId;
     private List<PartyReservation> parties = new ArrayList<>();
+
+    public GroupReservation(String reservationId) {
+    }
 }

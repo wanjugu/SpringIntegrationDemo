@@ -1,0 +1,13 @@
+package com.eip.demo.config;
+
+import com.eip.demo.model.PartyReservation;
+import org.springframework.integration.annotation.Gateway;
+import org.springframework.integration.annotation.MessagingGateway;
+import org.springframework.messaging.Message;
+
+@MessagingGateway(name="reservationAggregatorChannelGateway", defaultRequestChannel = "reservationAggregatorChannel")
+public interface ReservationAggregatorChannelGateway {
+
+    @Gateway
+    void publishPartyReservation(Message<PartyReservation> partyReservationMessage);
+}

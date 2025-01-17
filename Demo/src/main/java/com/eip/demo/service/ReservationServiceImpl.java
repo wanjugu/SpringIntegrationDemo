@@ -49,4 +49,18 @@ public class ReservationServiceImpl implements ReservationService{
 
         groupReservationChannelGateway.publishGroupReservation(MessageBuilder.withPayload(groupReservation).build());
     }
+
+    @ServiceActivator(inputChannel = "reservationCompletedChannel")
+    @Override
+    public void handleCompletedGroupReservation(GroupReservation groupReservation) {
+        logger.info("Group Reservation Complete: {} - {} parties",
+                groupReservation.getReservationId(),groupReservation.getParties().size());
+
+
+        groupReservation.getParties().forEach(partyReservation->
+                logger.info("Confirmation number for Party {}: {}",
+                        partyReservation.getPartyId(),partyReservation.getConfirmationNumber()));
+    }
+
+
 }

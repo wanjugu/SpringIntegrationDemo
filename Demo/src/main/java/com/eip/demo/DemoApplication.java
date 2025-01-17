@@ -3,8 +3,6 @@ package com.eip.demo;
 import com.eip.demo.service.ReservationService;
 import com.eip.demo.service.SupportService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -23,7 +21,7 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
-		System.out.println("+++++++++");
+		System.out.println("+++++++++Running Router Example++++++++");
 	}
 
 //	@Override

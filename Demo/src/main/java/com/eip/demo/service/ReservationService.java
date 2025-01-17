@@ -8,4 +8,6 @@ public interface ReservationService {
     void completeReservation(String reservationId, String confirmationNumber);
 
     void bookGroupReservation(GroupReservation groupReservation);
+
+    void handleCompletedGroupReservation(GroupReservation groupReservation);
 }
