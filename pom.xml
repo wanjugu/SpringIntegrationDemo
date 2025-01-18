@@ -25,6 +25,7 @@
 		<module>Transformers</module>
 		<module>Demo</module>
 		<module>HeaderEnrichers</module>
+		<module>ContentEnricher</module>
 	</modules>
 	<scm>
 		<connection/>
