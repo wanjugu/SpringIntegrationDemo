@@ -26,6 +26,8 @@
 		<module>Demo</module>
 		<module>HeaderEnrichers</module>
 		<module>ContentEnricher</module>
+		<module>FooReservationPublisher</module>
+		<module>FooReservationConsumerApp</module>
 	</modules>
 	<scm>
 		<connection/>
